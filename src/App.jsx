@@ -1,10 +1,9 @@
 import './App.css'
 import { Movies } from './components/Movies';
-import moviesList from './mocks/results.json'
+import { useMovies } from './hooks/useMovies';
 
-
-const movies = moviesList.Search;
 function App() {
+  const {movies} = useMovies();
 
   return (
     <div className='page'>
