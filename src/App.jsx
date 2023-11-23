@@ -21,10 +21,8 @@ function App() {
         </form>
       </header>
 
-      <main>
-        <section className='results'>          
-              <Movies movies={movies}/>              
-        </section>
+      <main className='results'>        
+        <Movies movies={movies}/>
       </main>
     </div>
   )
