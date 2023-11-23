@@ -18,15 +18,9 @@ function ListOfMovies( {movies} ){
     )
 }
 
-function NoMoviesResults(){
-    return (
-        <p>No se encontraron resultados</p>
-    )
-}
-
 export function Movies( { movies } ){
     const hasMovies = movies?.length > 0;
     return (
-        hasMovies ? <ListOfMovies movies={movies} /> : <NoMoviesResults/>
+        hasMovies ? <ListOfMovies movies={movies} /> : <p>No se encontraron resultados</p>
     )
 }
