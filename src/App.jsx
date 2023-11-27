@@ -11,12 +11,20 @@ function App() {
     setTerm(search_input);
   }
 
+  const handleOnChange = ()=> {
+    
+  }
+
   return (
     <div className='page'>
       <header>
         <h1>Buscador de películas</h1>
         <form onSubmit={search}>
-          <input name='search_input' type="text" placeholder="Avenger, Star Wars ..."/>
+          <input 
+            name='search_input' 
+            type="search" 
+            onClick={handleOnChange}
+            placeholder="Avenger, Star Wars ..."/>
           <button type="submit">Buscar</button>
         </form>
       </header>
