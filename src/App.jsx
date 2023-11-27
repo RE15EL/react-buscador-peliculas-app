@@ -3,7 +3,7 @@ import { Movies } from './components/Movies';
 import { useMovies } from './hooks/useMovies';
 
 function App() {
-  const { movies, setTerm } = useMovies();
+  const { movies, term, setTerm } = useMovies();
 
   const search = (event)=> {
     event.preventDefault();
@@ -11,8 +11,9 @@ function App() {
     setTerm(search_input);
   }
 
-  const handleOnChange = ()=> {
-    
+  const handleOnChange = (e)=> {
+    setTerm(e.target.value);
+    console.log(term);
   }
 
   return (
@@ -23,7 +24,7 @@ function App() {
           <input 
             name='search_input' 
             type="search" 
-            onClick={handleOnChange}
+            onChange={handleOnChange}
             placeholder="Avenger, Star Wars ..."/>
           <button type="submit">Buscar</button>
         </form>
