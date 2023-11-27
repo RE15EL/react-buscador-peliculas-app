@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import './App.css'
 import { Movies } from './components/Movies';
 import { useMovies } from './hooks/useMovies';
 
 function App() {
   
-  const { movies, term, setTerm, sort, setSort } = useMovies();
+  const { movies, setTerm, sort, setSort } = useMovies();
 
   const search = (event)=> {
     event.preventDefault();
@@ -15,7 +14,6 @@ function App() {
 
   const handleOnChange = (e)=> {
     setTerm(e.target.value);
-    console.log(term);
   }
 
   const handleOnCheck = ()=> {
