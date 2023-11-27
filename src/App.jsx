@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import './App.css'
 import { Movies } from './components/Movies';
 import { useMovies } from './hooks/useMovies';
 
 function App() {
-  const { movies, term, setTerm } = useMovies();
+  
+  const { movies, term, setTerm, sort, setSort } = useMovies();
 
   const search = (event)=> {
     event.preventDefault();
@@ -14,6 +16,10 @@ function App() {
   const handleOnChange = (e)=> {
     setTerm(e.target.value);
     console.log(term);
+  }
+
+  const handleOnCheck = ()=> {
+    setSort(!sort);
   }
 
   return (
@@ -28,6 +34,14 @@ function App() {
             placeholder="Avenger, Star Wars ..."/>
           <button type="submit">Buscar</button>
         </form>
+
+        <div className="form-check">
+          <label className="" >
+            <input onChange={handleOnCheck} className="form-check-input" type="checkbox" value={sort} />
+            Ordenar por título
+          </label>
+        </div>          
+               
       </header>
 
       <main className='results'>        

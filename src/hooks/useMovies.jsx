@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState  } from "react"
+import { useEffect, useMemo, useRef, useState  } from "react"
 import { getMovies } from "../services/movies";
 import { useDebounce } from "use-debounce";
 
 export function useMovies(){
   const [term, setTerm] = useState('');
   const [movies, setMovies] = useState([]);
+  const [sort, setSort] = useState(false);
   const [debounceTerm] = useDebounce(term, 400);
   const prevTerm = useRef(term);
   
@@ -23,5 +24,13 @@ export function useMovies(){
       loadMovies();
     },[debounceTerm])
   
-    return { movies, term, setTerm };
+    const sortedMovies = useMemo(() =>{
+      const sortedMovies = sort 
+        ? [...movies].sort((a,b)=> a.Title.localeCompare(b.Title))
+        : movies
+      return sortedMovies
+      }, [sort, movies]
+    )
+
+    return { movies: sortedMovies, term, setTerm, sort, setSort };
   }
